@@ -73,7 +73,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	<div id="body">
 		<h1>Reciept Recognition System</h1>
 		<?php echo $error;?> 
-		<?php echo form_open_multipart('file_controller/do_upload');?> 
+		<?php echo form_open_multipart('file/submit');?> 
 		<p>Please upload the txt file for the reciept:</p>
 		<input type="file" class="file" name="reciept" id="reciept" />
 
