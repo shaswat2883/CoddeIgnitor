@@ -32,9 +32,10 @@
 			 	"Reciept belongs to : ".$output;
 			 }
 		}
-
+	/*function to break down the file content to forn an array*/
 		private function getWordArray($reciept_content){
 			foreach($reciept_content as $str){
+				/*converting the raw data to json*/
 				$str_rep = str_replace("'",'"',$str);
 				$sub_arrays[] = json_decode($str_rep);
 			}
@@ -46,6 +47,7 @@
 					exit("please upload the correctly formatted file");
 				}
 			}
+			/*sorting the array of words according to the index ie word_id*/
 			ksort($wordArray);
 			return $wordArray;
 		}
@@ -71,8 +73,11 @@
 			return $sub_array;
 		}
 
+
+	/*function to check if any of the company name in the list match with any words in the string of words*/ 
 		private function checkCompanyName($stringOfReciept,$supplier_name_array){
 			foreach($supplier_name_array as $supplier_name){
+				/*removing the white spaces from the string*/
 				$stringOfReciept = preg_replace('/\s+/', '', $stringOfReciept);
 				if (strpos($stringOfReciept, preg_replace('/\s+/', '', $supplier_name)) !== false) {
 					$result = $supplier_name;
